@@ -1,12 +1,14 @@
 buildscript {
 	ext {
 		springBootVersion = '1.3.1.RELEASE'
+		mongodbPluginVersion = '0.8.0'
 	}
 	repositories {
 		mavenCentral()
 	}
 	dependencies {
 		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}") 
+		classpath("com.sourcemuse.gradle.plugin:gradle-mongo-plugin:${mongodbPluginVersion}")
 	}
 }
 
@@ -15,6 +17,7 @@ apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: 'spring-boot' 
 apply plugin: 'checkstyle'
+apply plugin: 'mongo'
 
 jar {
 	baseName = 'cb-micro-services'

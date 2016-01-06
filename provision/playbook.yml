@@ -1,0 +1,6 @@
+---
+# file: java-playbook.yml
+- hosts: all
+  remote_user: root
+  roles:
+   - lerencao.java-role
