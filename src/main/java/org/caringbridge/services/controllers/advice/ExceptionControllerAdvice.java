@@ -1,4 +1,4 @@
-package org.caringbridge.services.controllers;
+package org.caringbridge.services.controllers.advice;
 
 import org.caringbridge.services.CbServiceException;
 import org.caringbridge.services.rep.ExceptionMessage;
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 /**
  * Controller advice class that will handle the exceptions in the application
  * and return the appropriate json representation for the exception.
- * 
+ *
  * @author Alexandro Blanco <ablanco@caringbridge.org>
  */
 @ControllerAdvice
@@ -23,7 +23,7 @@ public class ExceptionControllerAdvice {
      * that extend from CbServiceException and convert them to a clear json
      * representation with the status code, error code and message specified in
      * the @ResponseStatus annotation associated with the exception.
-     * 
+     *
      * @param ex
      *            The CbServiceException exception thrown in the system
      * @return ResponseEntity<String> with the json content representing the
