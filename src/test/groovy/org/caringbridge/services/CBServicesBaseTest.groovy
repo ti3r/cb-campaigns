@@ -6,18 +6,27 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.SpringApplicationConfiguration
 import org.springframework.boot.test.WebIntegrationTest
 import org.springframework.context.ConfigurableApplicationContext
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.setup.MockMvcBuilders
 import org.springframework.web.servlet.config.annotation.EnableWebMvc
 
 import spock.lang.Specification
 
+
+/**
+ * Abstract class that will serve as base for all the
+ * spock integration tests of the project.
+ * @author Alexandro Blanco <ablanco@caringbridge.org>
+ *
+ */
 @SpringApplicationConfiguration(classes = AppConfigTest.class)
 @WebIntegrationTest(randomPort = true)
 @EnableWebMvc
 //@RunWith(SpringJUnit4ClassRunner.class)
 //@WebAppConfiguration
-class CBServicesBaseTest extends Specification {
+@ActiveProfiles("integration-tests")
+abstract class CBServicesBaseTest extends Specification {
 
     //@Shared
     //@AutoCleanup

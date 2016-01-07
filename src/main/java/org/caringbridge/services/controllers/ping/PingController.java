@@ -1,6 +1,7 @@
-package org.caringbridge.services.controllers;
+package org.caringbridge.services.controllers.ping;
 
 import org.caringbridge.services.CbServiceException;
+import org.caringbridge.services.controllers.CbBaseController;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
