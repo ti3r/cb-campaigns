@@ -3,10 +3,9 @@ package org.caringbridge.services.controllers.ping;
 import org.caringbridge.services.CBServicesBaseTest;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
-import spock.util.matcher.HamcrestMatchers;
+
 /**
  * Class that will test the PingController controller
  * @author Alexandro Blanco <ablanco@caringbridge.org>

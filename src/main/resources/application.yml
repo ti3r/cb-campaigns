@@ -5,13 +5,14 @@ spring:
 org:
   caringbridge:
     services:
+      version: 1.0
       swagger:
         title: CaringBridge Micro-Service
         description: Restful services application to connect with founding partners
         termslocation: /terms_of_service.txt
         contact: contact@caringbridge.org
         license:
-          type: Caring Bridge propietary license
+          type: Caring Bridge proprietary license
           url: http://www.caringbridge.org/licenses/LICENSE
             
 ---

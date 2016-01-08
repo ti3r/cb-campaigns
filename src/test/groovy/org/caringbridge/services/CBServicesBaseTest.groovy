@@ -1,17 +1,19 @@
 package org.caringbridge.services;
 
-import org.caringbridge.services.config.AppConfigTest
-import org.junit.Before
-import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.test.SpringApplicationConfiguration
-import org.springframework.boot.test.WebIntegrationTest
-import org.springframework.context.ConfigurableApplicationContext
+import org.junit.Before;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.boot.test.SpringApplicationConfiguration;
+import org.springframework.boot.test.WebIntegrationTest;
 import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.web.servlet.MockMvc
-import org.springframework.test.web.servlet.setup.MockMvcBuilders
-import org.springframework.web.servlet.config.annotation.EnableWebMvc
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import spock.lang.Specification
+import org.caringbridge.services.config.AppConfigTest;
+
+import spock.lang.Specification;
+
 
 
 /**

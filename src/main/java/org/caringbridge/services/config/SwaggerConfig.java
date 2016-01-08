@@ -11,9 +11,9 @@ import com.mangofactory.swagger.plugin.EnableSwagger;
 import com.mangofactory.swagger.plugin.SwaggerSpringMvcPlugin;
 
 /**
- * Class to configure behavior of spring-swagger component.
- * This class will contain the swagger top level definitions 
- * for the api.
+ * Class to configure behavior of spring-swagger component. This class will
+ * contain the swagger top level definitions for the api.
+ * 
  * @author Alexandro Blanco <ablanco@caringbridge.org>
  *
  */
@@ -22,38 +22,69 @@ import com.mangofactory.swagger.plugin.SwaggerSpringMvcPlugin;
 @EnableConfigurationProperties
 public class SwaggerConfig {
 
-    @Value(value="${org.caringbridge.services.swagger.title}")
+    /**
+     * The configurable property that will contain the Title Of The Swagger Api
+     * Documentation.
+     */
+    @Value(value = "${org.caringbridge.services.swagger.title}")
     private String swaggerApiTitle;
-    
-    @Value(value="${org.caringbridge.services.swagger.description}")
+    /**
+     * The configurable property that will contain the Description Of The Swagger Api
+     * Documentation.
+     */
+    @Value(value = "${org.caringbridge.services.swagger.description}")
     private String swaggerApiDescription;
-    
-    @Value(value="${org.caringbridge.services.swagger.termslocation}")
+    /**
+     * The configurable property that will contain the Terms of Service Location 
+     * Of The Swagger Api Documentation.
+     */
+    @Value(value = "${org.caringbridge.services.swagger.termslocation}")
     private String swaggerApiTermsLocation;
-    
-    @Value(value="${org.caringbridge.services.swagger.contact}")
+    /**
+     * The configurable property that will contain the contact email Of The 
+     * Swagger Api Documentation.
+     */
+    @Value(value = "${org.caringbridge.services.swagger.contact}")
     private String swaggerApiContact;
-    
-    @Value(value="${org.caringbridge.services.swagger.license.type}")
+    /**
+     * The configurable property that will contain the license type Of 
+     * The Swagger Api Documentation.
+     */
+    @Value(value = "${org.caringbridge.services.swagger.license.type}")
     private String swaggerApiLicenseName;
-    
-    @Value(value="${org.caringbridge.services.swagger.license.url}")
+    /**
+     * The configurable property that will contain the license url Of 
+     * The Swagger Api Documentation.
+     */
+    @Value(value = "${org.caringbridge.services.swagger.license.url}")
     private String swaggerApiLicenseUrl;
-    
+
+    /**
+     * The configurable property that will contain the license version Of 
+     * The Api.
+     */
+    @Value(value = "${org.caringbridge.services.version}")
+    private String apiVersion;
+    /**
+     * Creates the Spring Bean that will configure the Swagger top level documentation.
+     * @param springSwaggerConfig SpringSwaggerConfig where to inject the top level
+     * documentation
+     * @return SwaggerSpringMvcPlugin that will drive the swagger configuration
+     */
     @Bean
-    public SwaggerSpringMvcPlugin createTopLevelSwaggerDocumentation(SpringSwaggerConfig springSwaggerConfig){
-	return new SwaggerSpringMvcPlugin(springSwaggerConfig).apiInfo(apiInfo())
-		.includePatterns("/.*")
-		.apiVersion("2.0")
-		;
-		
+    public SwaggerSpringMvcPlugin createTopLevelSwaggerDocumentation(final SpringSwaggerConfig springSwaggerConfig) {
+	return new SwaggerSpringMvcPlugin(springSwaggerConfig).apiInfo(apiInfo()).includePatterns("/.*")
+		.apiVersion("2.0");
+
     }
-    
-	public ApiInfo apiInfo(){
-		ApiInfo api = new ApiInfo(swaggerApiTitle,
-			swaggerApiDescription, 
-				swaggerApiTermsLocation, swaggerApiContact, swaggerApiLicenseName, swaggerApiLicenseUrl);
-		return api;
-	}
-    
+    /**
+     * Creates the ApiInfo object with the information for swagger.
+     * @return ApiInfo object with the details.
+     */
+    private ApiInfo apiInfo() {
+	ApiInfo api = new ApiInfo(swaggerApiTitle, swaggerApiDescription, swaggerApiTermsLocation, swaggerApiContact,
+		swaggerApiLicenseName, swaggerApiLicenseUrl);
+	return api;
+    }
+
 }
