@@ -1,3 +1,25 @@
 spring:
   profiles:
     active: dev
+      
+org:
+  caringbridge:
+    services:
+      swagger:
+        title: CaringBridge Micro-Service
+        description: Restful services application to connect with founding partners
+        termslocation: /terms_of_service.txt
+        contact: contact@caringbridge.org
+        license:
+          type: Caring Bridge propietary license
+          url: http://www.caringbridge.org/licenses/LICENSE
+            
+---
+spring:
+  profiles: dev
+  
+server:
+  port: 8080
+
+
+  

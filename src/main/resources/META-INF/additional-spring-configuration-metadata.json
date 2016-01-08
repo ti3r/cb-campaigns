@@ -1,0 +1,34 @@
+{
+"properties": 
+[{
+  "name": "org.caringbridge.services.swagger.title",
+  "type": "java.lang.String",
+  "description": "A value for 'server.org.caringbridge.services.swagger.title' injection variable in class SwaggerConfig"
+ },
+ {
+  "name": "org.caringbridge.services.swagger.description",
+  "type": "java.lang.String",
+  "description": "A value for 'server.org.caringbridge.services.swagger.description' injection variable in class SwaggerConfig"
+ },
+ {
+  "name": "org.caringbridge.services.swagger.termslocation",
+  "type": "java.lang.String",
+  "description": "A value for 'server.org.caringbridge.services.swagger.termslocation' injection variable in class SwaggerConfig"
+ },
+ {
+  "name": "org.caringbridge.services.swagger.contact",
+  "type": "java.lang.String",
+  "description": "A value for 'server.org.caringbridge.services.swagger.contact' injection variable in class SwaggerConfig"
+ },
+ {
+  "name": "org.caringbridge.services.swagger.license.type",
+  "type": "java.lang.String",
+  "description": "A value for 'server.org.caringbridge.services.swagger.license.type' injection variable in class SwaggerConfig"
+ },
+ {
+  "name": "org.caringbridge.services.swagger.license.url",
+  "type": "java.lang.String",
+  "description": "A value for 'server.org.caringbridge.services.swagger.license.url' injection variable in class SwaggerConfig"
+ }
+]
+}

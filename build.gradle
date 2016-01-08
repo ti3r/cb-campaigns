@@ -42,12 +42,16 @@ dependencies {
 	}
 	// Undertow will serve as the application's HTTP container
 	compile('org.springframework.boot:spring-boot-starter-undertow')
-	
-	testCompile('org.codehaus.groovy:groovy-all:2.4.5')
+	compile('com.mangofactory:swagger-springmvc:1.0.2')
+//	compile('org.yaml:snakeyaml:1.16')
+	//Test dependencies
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 	testCompile('cglib:cglib-nodep:3.2.0')
 	testCompile('com.jayway.jsonpath:json-path:2.1.0')
-	testCompile("org.spockframework:spock-core:0.7-groovy-2.0")
+	testCompile('org.codehaus.groovy:groovy-all:2.4.5')
+	//These two should have the same version and comply with major minor of groovy-all
+	testCompile('org.spockframework:spock-core:1.0-groovy-2.4')
+	testCompile('org.spockframework:spock-spring:1.0-groovy-2.4')
 }
 
 

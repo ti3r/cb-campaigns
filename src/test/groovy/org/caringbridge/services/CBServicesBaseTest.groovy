@@ -1,42 +1,41 @@
 package org.caringbridge.services;
 
-import java.util.concurrent.Callable;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
-import java.util.concurrent.TimeUnit;
+import org.caringbridge.services.config.AppConfigTest
+import org.junit.Before
+import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.boot.test.SpringApplicationConfiguration
+import org.springframework.boot.test.WebIntegrationTest
+import org.springframework.context.ConfigurableApplicationContext
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.web.servlet.MockMvc
+import org.springframework.test.web.servlet.setup.MockMvcBuilders
+import org.springframework.web.servlet.config.annotation.EnableWebMvc
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import spock.lang.Specification
 
-import spock.lang.AutoCleanup;
-import spock.lang.Shared;
-import spock.lang.Specification;
 
-class CBServicesBaseTest extends Specification {
+/**
+ * Abstract class that will serve as base for all the
+ * spock integration tests of the project.
+ * @author Alexandro Blanco <ablanco@caringbridge.org>
+ *
+ */
+@SpringApplicationConfiguration(classes = AppConfigTest.class)
+@WebIntegrationTest(randomPort = true)
+@EnableWebMvc
+//@RunWith(SpringJUnit4ClassRunner.class)
+//@WebAppConfiguration
+@ActiveProfiles("integration-tests")
+abstract class CBServicesBaseTest extends Specification {
 
-    @Shared
-    @AutoCleanup
+    //@Shared
+    //@AutoCleanup
+    @Autowired
     public ConfigurableApplicationContext context;
-
-    @Shared
     public MockMvc mvc;
-
-    void setupSpec() throws Exception {
-	// Create an application context based on the
-	// SpringBootSpockTestApplication
-	// class containing the app configuration. It is created in a Future
-	// object
-	// In order to wait only 60 seconds for the context to come up or fail
-	Future<ConfigurableApplicationContext> future = Executors.newSingleThreadExecutor()
-		.submit(new Callable<ConfigurableApplicationContext>() {
-		    @Override
-		    public ConfigurableApplicationContext call() throws Exception {
-			return (ConfigurableApplicationContext) SpringApplication.run(CbMicroServicesApplication.class);
-		    }
-		});
-	context = future.get(60, TimeUnit.SECONDS);
+    
+    @Before
+    public void init() throws Exception{
 	mvc = MockMvcBuilders.webAppContextSetup(context).build();
     }
 
