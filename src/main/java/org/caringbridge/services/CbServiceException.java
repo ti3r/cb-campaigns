@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 /**
  * The base class for all the exceptions in the service platform.
- * 
+ *
  */
 @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR, reason = "0001")
 public class CbServiceException extends Exception {

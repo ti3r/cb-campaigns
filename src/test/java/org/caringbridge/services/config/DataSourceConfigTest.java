@@ -19,7 +19,7 @@ import de.flapdoodle.embed.mongo.tests.MongodForTestsFactory;
 /**
  * Configuration class to enable the source of the data for our application
  * (MongoDB will be used for this app).
- * 
+ *
  * @author Alexandro Blanco <ablanco@caringbridge.org>
  *
  */
@@ -30,10 +30,12 @@ public class DataSourceConfigTest extends DataSourceConfig {
 
     @Override
     public MongoDbFactory mongoDbFactory() throws Exception {
-	
-//	MongodStarter starter = MongodStarter.getDefaultInstance();
-//	IMongodConfig config = new MongodConfigBuilder().version(Version.Main.V3_1).net(new Net(12345, Network.localhostIsIPv6()))
-//	.build();
+
+	// MongodStarter starter = MongodStarter.getDefaultInstance();
+	// IMongodConfig config = new
+	// MongodConfigBuilder().version(Version.Main.V3_1).net(new Net(12345,
+	// Network.localhostIsIPv6()))
+	// .build();
 	MongodForTestsFactory factory = MongodForTestsFactory.with(Version.Main.V3_1);
 	MongoClient client = factory.newMongo();
 	DB db = client.getDB("test-" + UUID.randomUUID());
