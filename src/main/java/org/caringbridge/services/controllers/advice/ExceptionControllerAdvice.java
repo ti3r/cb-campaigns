@@ -22,6 +22,10 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @ControllerAdvice
 public class ExceptionControllerAdvice {
 
+    /**
+     * The ResourceBundleMessageSource that reads the message resource bundle.
+     * To display the i18n and l10n message according to resource bundle
+     */
     @Autowired
     private ResourceBundleMessageSource messageSource;
 
@@ -38,11 +42,9 @@ public class ExceptionControllerAdvice {
      */
     @ExceptionHandler(value = CbServiceException.class)
     public final ResponseEntity<ExceptionMessage> handleExceptions(final CbServiceException ex) {
-	// Return the status code from the exception
 	ResponseStatus stat = ex.getClass().getAnnotation(ResponseStatus.class);
-	System.out.println("The ResponseStatus is: " + stat.toString());
 	String msg = "Unknown Error. Please try again later";
-	HttpStatus code = HttpStatus.INTERNAL_SERVER_ERROR;;
+	HttpStatus code = HttpStatus.INTERNAL_SERVER_ERROR;
 	if (stat != null) {
 	    code = stat.code();
 	    msg = stat.reason();
