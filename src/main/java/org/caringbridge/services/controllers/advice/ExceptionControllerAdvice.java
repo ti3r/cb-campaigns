@@ -3,7 +3,6 @@ package org.caringbridge.services.controllers.advice;
 import java.util.Locale;
 
 import org.caringbridge.services.CbServiceException;
-import org.caringbridge.services.exceptions.CbPersonNotFoundException;
 import org.caringbridge.services.rep.ExceptionMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.ResourceBundleMessageSource;
@@ -37,17 +36,14 @@ public class ExceptionControllerAdvice {
      * @return ResponseEntity<String> with the json content representing the
      *         exception
      */
-    @SuppressWarnings("unused")
     @ExceptionHandler(value = CbServiceException.class)
     public final ResponseEntity<ExceptionMessage> handleExceptions(final CbServiceException ex) {
 	// Return the status code from the exception
 	ResponseStatus stat = ex.getClass().getAnnotation(ResponseStatus.class);
 	System.out.println("The ResponseStatus is: " + stat.toString());
 	String msg = "Unknown Error. Please try again later";
-	HttpStatus code = null;
-	if (stat == null) {
-	    code = HttpStatus.INTERNAL_SERVER_ERROR;
-	} else {
+	HttpStatus code = HttpStatus.INTERNAL_SERVER_ERROR;;
+	if (stat != null) {
 	    code = stat.code();
 	    msg = stat.reason();
 	}
