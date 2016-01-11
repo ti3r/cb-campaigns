@@ -1,6 +1,5 @@
 package org.caringbridge.services.config;
 
-import org.caringbridge.services.CbMicroServicesApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
@@ -20,7 +19,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @WebAppConfiguration
 @EnableWebMvc
 @EnableMongoRepositories
-@ComponentScan(basePackageClasses = { CbMicroServicesApplication.class })
+@ComponentScan("org.caringbridge")
 @EnableAutoConfiguration
 public class AppConfigTest {
 
