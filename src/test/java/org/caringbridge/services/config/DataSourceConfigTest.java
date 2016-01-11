@@ -25,7 +25,7 @@ import de.flapdoodle.embed.mongo.tests.MongodForTestsFactory;
  */
 @Configuration
 @EnableMongoRepositories
-@Profile("integration-tests2")
+@Profile("integration-tests")
 public class DataSourceConfigTest extends DataSourceConfig {
 
     @Override

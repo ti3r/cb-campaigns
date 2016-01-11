@@ -27,7 +27,7 @@ public class DataSourceConfig extends AbstractMongoConfiguration {
     /**
      * The port number where the mongo db instance is running.
      */
-    private static final int MONGO_DB_PORT = 12345;
+    private static final int MONGO_DB_PORT = 27017;
 
     /**
      * Returns the String database name for the application.
@@ -56,7 +56,7 @@ public class DataSourceConfig extends AbstractMongoConfiguration {
      */
     @Override
     public MongoDbFactory mongoDbFactory() throws Exception {
-	MongoCredential credential = MongoCredential.createCredential("user", "db", "pass".toCharArray());
+	MongoCredential credential = MongoCredential.createCredential("admin", "test", "admin".toCharArray());
 	int port = MONGO_DB_PORT;
 	ServerAddress seeds = new ServerAddress("server", port);
 	MongoClient client = new MongoClient(seeds, Arrays.asList(credential));
