@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * Representation object for the messages that will be serialized by the
  * exception handlers.
- * 
+ *
  * @author Alexandro Blanco <ablanco@caringbridge.org>
  *
  */
@@ -33,7 +33,7 @@ public class ExceptionMessage {
 
     /**
      * Constructor for the class that populates all the values.
-     * 
+     *
      * @param errorCode
      *            Integer value for property errorCode
      * @param message
@@ -47,7 +47,7 @@ public class ExceptionMessage {
 
     /**
      * This implementation gets value for errorCode property.
-     * 
+     *
      * @return Integer with value
      */
     public Integer getErrorCode() {
@@ -56,7 +56,7 @@ public class ExceptionMessage {
 
     /**
      * This implementation sets value for errorCode property.
-     * 
+     *
      * @param errorCode
      *            Integer value for property errorCode
      */
@@ -66,7 +66,7 @@ public class ExceptionMessage {
 
     /**
      * This implementation gets value for message property.
-     * 
+     *
      * @return String with value
      */
     public String getMessage() {
@@ -75,7 +75,7 @@ public class ExceptionMessage {
 
     /**
      * This implementation sets for message property.
-     * 
+     *
      * @param message
      *            String value for property message
      */

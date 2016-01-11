@@ -1,7 +1,12 @@
 package org.caringbridge.services.controllers.advice;
 
+import java.util.Locale;
+
 import org.caringbridge.services.CbServiceException;
+import org.caringbridge.services.exceptions.CbPersonNotFoundException;
 import org.caringbridge.services.rep.ExceptionMessage;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +23,9 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @ControllerAdvice
 public class ExceptionControllerAdvice {
 
+    @Autowired
+    private ResourceBundleMessageSource messageSource;
+
     /**
      * Exception Handler method to convert all the exceptions in the application
      * that extend from CbServiceException and convert them to a clear json
@@ -29,10 +37,12 @@ public class ExceptionControllerAdvice {
      * @return ResponseEntity<String> with the json content representing the
      *         exception
      */
+    @SuppressWarnings("unused")
     @ExceptionHandler(value = CbServiceException.class)
     public final ResponseEntity<ExceptionMessage> handleExceptions(final CbServiceException ex) {
 	// Return the status code from the exception
 	ResponseStatus stat = ex.getClass().getAnnotation(ResponseStatus.class);
+	System.out.println("The ResponseStatus is: " + stat.toString());
 	String msg = "Unknown Error. Please try again later";
 	HttpStatus code = null;
 	if (stat == null) {
@@ -41,8 +51,9 @@ public class ExceptionControllerAdvice {
 	    code = stat.code();
 	    msg = stat.reason();
 	}
-	ExceptionMessage res = new ExceptionMessage(1, msg);
+	Locale en = new Locale("en");
+	String errorMsg = messageSource.getMessage(msg, null, en);
+	ExceptionMessage res = new ExceptionMessage(code.value(), errorMsg);
 	return ResponseEntity.status(code).contentType(MediaType.APPLICATION_JSON).body(res);
     }
-
 }
