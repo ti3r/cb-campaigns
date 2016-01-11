@@ -54,6 +54,12 @@ public class PingController extends CbBaseController {
 	throw new CbServiceException();
     }
 
+
+    /**
+     *
+     * @return ResponseEntity <String> that should never return
+     * @throws CbGoalNotFoundException always as test
+     */
     @ApiOperation(value = "goalNotFound", httpMethod = "GET", consumes = "*/*", produces = "application/json", notes = "Produces a GoalNotFound error in the system to check the health of the serialization"
 	    + "mechanism of exceptions to json representations")
     @RequestMapping(path = "/goal", method = RequestMethod.GET)
@@ -62,6 +68,11 @@ public class PingController extends CbBaseController {
 	throw new CbGoalNotFoundException();
     }
 
+    /**
+     *
+     * @return ResponseEntity <String> that should never return
+     * @throws CbPersonNotFoundException
+     */
     @ApiOperation(value = "personNotFound", httpMethod = "GET", consumes = "*/*", produces = "application/json", notes = "Produces a PersonNotFound error in the system to check the health of the serialization"
 	    + "mechanism of exceptions to json representations")
     @RequestMapping(path = "/person", method = RequestMethod.GET)
