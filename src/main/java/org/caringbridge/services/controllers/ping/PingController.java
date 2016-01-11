@@ -2,6 +2,8 @@ package org.caringbridge.services.controllers.ping;
 
 import org.caringbridge.services.CbServiceException;
 import org.caringbridge.services.controllers.CbBaseController;
+import org.caringbridge.services.exceptions.CbGoalNotFoundException;
+import org.caringbridge.services.exceptions.CbPersonNotFoundException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -40,7 +42,6 @@ public class PingController extends CbBaseController {
 
     /**
      * Simple method to test the exception throwing in the application.
-     * 
      * @return ResponseEntity <String> that should never return
      * @throws CbServiceException
      *             always as test
@@ -52,5 +53,23 @@ public class PingController extends CbBaseController {
     public final ResponseEntity<String> exception() throws CbServiceException {
 	getLog().info("throwing exception");
 	throw new CbServiceException();
+    }
+
+    @ApiOperation(value = "goalNotFound", httpMethod = "GET", consumes = "*/*", produces = "application/json", 
+	    notes = "Produces a GoalNotFound error in the system to check the health of the serialization"
+	    + "mechanism of exceptions to json representations")
+    @RequestMapping(path = "/goal", method = RequestMethod.GET)
+    public final ResponseEntity<String> goalNotFoundException() throws CbGoalNotFoundException {
+	getLog().info("throwing GoalNotFoundException");
+	throw new CbGoalNotFoundException();
+    }
+
+    @ApiOperation(value = "personNotFound", httpMethod = "GET", consumes = "*/*", produces = "application/json", 
+	    notes = "Produces a PersonNotFound error in the system to check the health of the serialization"
+	    + "mechanism of exceptions to json representations")
+    @RequestMapping(path = "/person", method = RequestMethod.GET)
+    public final ResponseEntity<String> personNotFoundException() throws CbPersonNotFoundException {
+	getLog().info("throwing PersonNotFoundException");
+	throw new CbPersonNotFoundException();
     }
 }

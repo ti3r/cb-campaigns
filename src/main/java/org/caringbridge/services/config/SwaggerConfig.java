@@ -3,7 +3,9 @@ package org.caringbridge.services.config;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.support.ResourceBundleMessageSource;
 
 import com.mangofactory.swagger.configuration.SpringSwaggerConfig;
 import com.mangofactory.swagger.models.dto.ApiInfo;
@@ -19,6 +21,7 @@ import com.mangofactory.swagger.plugin.SwaggerSpringMvcPlugin;
  */
 @Configuration
 @EnableSwagger
+@ComponentScan(basePackages = "org.caringbridge")
 @EnableConfigurationProperties
 public class SwaggerConfig {
 
@@ -72,7 +75,7 @@ public class SwaggerConfig {
      * @return SwaggerSpringMvcPlugin that will drive the swagger configuration
      */
     @Bean
-    public SwaggerSpringMvcPlugin createTopLevelSwaggerDocumentation(final SpringSwaggerConfig springSwaggerConfig) {
+    public SwaggerSpringMvcPlugin createTopLevelSwaggerDocumentation(SpringSwaggerConfig springSwaggerConfig) {
 	return new SwaggerSpringMvcPlugin(springSwaggerConfig).apiInfo(apiInfo()).includePatterns("/.*")
 		.apiVersion("2.0");
 
@@ -81,10 +84,18 @@ public class SwaggerConfig {
      * Creates the ApiInfo object with the information for swagger.
      * @return ApiInfo object with the details.
      */
-    private ApiInfo apiInfo() {
+    public ApiInfo apiInfo() {
 	ApiInfo api = new ApiInfo(swaggerApiTitle, swaggerApiDescription, swaggerApiTermsLocation, swaggerApiContact,
 		swaggerApiLicenseName, swaggerApiLicenseUrl);
 	return api;
     }
 
+    @Bean
+    public ResourceBundleMessageSource messageSource() {
+	ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
+	messageSource.setBasename("i18n/messages");
+	messageSource.setDefaultEncoding("UTF-8");
+	return messageSource;
+    }
+    
 }
