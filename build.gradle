@@ -15,12 +15,12 @@ buildscript {
 apply plugin: 'groovy'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
-apply plugin: 'spring-boot' 
+apply plugin: 'spring-boot'	 
 apply plugin: 'checkstyle'
 apply plugin: 'mongo'
 
 jar {
-	baseName = 'cb-micro-services'
+	baseName = 'cb-campaigns'
 	version = '0.0.1-SNAPSHOT'
 }
 sourceCompatibility = 1.8
@@ -29,7 +29,6 @@ targetCompatibility = 1.8
 repositories {
 	mavenCentral()
 }
-
 
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter-data-mongodb')
