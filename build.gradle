@@ -27,7 +27,7 @@ apply plugin: 'pl.allegro.tech.build.axion-release'
 
 jar {
 	baseName = 'cb-campaigns'
-	version = '0.1.10'
+	version = '2.0.0'
 }
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
