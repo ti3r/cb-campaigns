@@ -86,8 +86,8 @@ scmVersion {
     }
     
     hooks {
-	pre 'fileUpdate', [file: 'gradle.properties', pattern: {v,p -> /(version.)$v/}, replacement: {v,p ->"\$1 $v"}]
-	pre 'fileUpdate', [file: 'build.gradle', pattern: {v,p -> /(version.)$v/}, replacement: {v,p ->"\$1 $v"}]
+	pre 'fileUpdate', [file: 'gradle.properties', pattern: {v,p -> /(version=.*)$v/}, replacement: {v,p ->"alex"}]
+	pre 'fileUpdate', [file: 'build.gradle', pattern: {v,p -> /(version.*)$v/}, replacement: {v,p ->"alex"}]
 	pre 'commit'
     }
 }
