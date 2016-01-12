@@ -27,7 +27,7 @@ apply plugin: 'pl.allegro.tech.build.axion-release'
 
 jar {
 	baseName = 'cb-campaigns'
-	version = "1.0-SNAPSHOT"
+	version ='0.1.8'
 }
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
@@ -86,8 +86,8 @@ scmVersion {
     }
     
     hooks {
-	pre 'fileUpdate', [file: 'gradle.properties', pattern: {v,p -> /.*version=.*/}, replacement: {v,p ->"version=$v"}]
-	pre 'fileUpdate', [file: 'build.gradle', pattern: {v,p -> /(\s\t)*version\s?=(.*)$/}, replacement: {v,p ->"\$1version ='$v'"}]
+	pre 'fileUpdate', [file: 'gradle.properties', pattern: {v,p -> /.*version ='0.1.8'
+	pre 'fileUpdate', [file: 'build.gradle', pattern: {v,p -> /(\s\t)*version\s?=(.*)$/}, replacement: {v,p ->"\$1version ='0.1.8'
 	pre 'commit'
     }
 }
