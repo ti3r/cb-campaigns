@@ -20,7 +20,7 @@ apply plugin: 'idea'
 apply plugin: 'spring-boot'
 apply plugin: 'checkstyle'
 apply plugin: 'mongo'
-apply plugin: "com.jfrog.artifactory"
+//apply plugin: "com.jfrog.artifactory"
 
 jar {
 	baseName = 'cb-campaigns'
