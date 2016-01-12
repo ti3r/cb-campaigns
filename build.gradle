@@ -5,12 +5,11 @@ buildscript {
 	}
 	repositories {
 		mavenCentral()
-//		jcenter()
+		jcenter()
 	}
 	dependencies {
 		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
 		classpath("com.sourcemuse.gradle.plugin:gradle-mongo-plugin:${mongodbPluginVersion}")
-//		classpath("org.jfrog.buildinfo:build-info-extractor-gradle:4.0.0")
 	}
 }
 
@@ -20,7 +19,6 @@ apply plugin: 'idea'
 apply plugin: 'spring-boot'
 apply plugin: 'checkstyle'
 apply plugin: 'mongo'
-//apply plugin: "com.jfrog.artifactory"
 
 jar {
 	baseName = 'cb-campaigns'
@@ -75,17 +73,3 @@ checkstyle {
     configFile = checkstyleConfigFile
     ignoreFailures = true
 }
-
-//artifactory {
-//    contextUrl = 'http://jenkins.caringbridge.org:8081/artifactory'
-//    publish {
-//	contextUrl = 'http://jenkins.caringbridge.org:8081/artifactory'
-//	repository {
-//	    repoKey = 'libs-snapshot'
-//	    username = 'admin'
-//	    password = 'password'
-//	}
-//    }
-//    
-//}
-
