@@ -14,7 +14,7 @@ buildscript {
 }
 
 plugins {
-version=0.1.6
+    id 'pl.allegro.tech.build.axion-release' version '1.3.4'
 }
 
 apply plugin: 'groovy'
@@ -27,7 +27,7 @@ apply plugin: 'pl.allegro.tech.build.axion-release'
 
 jar {
 	baseName = 'cb-campaigns'
-version=0.1.6
+	version = "1.0-SNAPSHOT"
 }
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
@@ -53,7 +53,7 @@ dependencies {
 	testCompile('cglib:cglib-nodep:3.2.0')
 	testCompile('com.jayway.jsonpath:json-path:2.1.0')
 	testCompile('org.codehaus.groovy:groovy-all:2.4.5')
-version=0.1.6
+	//These two should have the same version and comply with major minor of groovy-all
 	testCompile('org.spockframework:spock-core:1.0-groovy-2.4')
 	testCompile('org.spockframework:spock-spring:1.0-groovy-2.4')
 	testCompile("de.flapdoodle.embed:de.flapdoodle.embed.mongo:1.50.1")
@@ -86,8 +86,8 @@ scmVersion {
     }
     
     hooks {
-version=0.1.6
-version=0.1.6
+	pre 'fileUpdate', [file: 'gradle.properties', pattern: {v,p -> /.*version=.*/}, replacement: {v,p ->"version=$v"}]
+	pre 'fileUpdate', [file: 'build.gradle', pattern: {v,p -> /.*version\s?=.*$/}, replacement: {v,p ->"version =$v"}]
 	pre 'commit'
     }
 }
